@@ -1,0 +1,32 @@
+name: Build and Sign Next App
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Build App
+        run: |
+          npm install
+          npx cap sync android
+          cd android && ./gradlew bundleRelease
+      - name: Sign AAB
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: android/app/build/outputs/bundle/release
+          signingKeyBase64: ${{ secrets.KEYSTORE_BASE64 }}
+          alias: my-key-alias
+          keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: Next-Final-AAB
+          path: android/app/build/outputs/bundle/release/*.aab
+
