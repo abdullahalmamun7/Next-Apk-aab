@@ -1,0 +1,95 @@
+name: Build and Release APK & AAB
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'adopt'
+        
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+      
+    - name: Decode Keystore
+      env:
+        KEYSTORE_FILE: ${{ secrets.KEYSTORE_FILE }}
+        KEYSTORE_PATH: ${{ github.workspace }}/signing.keystore
+      run: |
+        echo "$KEYSTORE_FILE" | base64 --decode > "$KEYSTORE_PATH"
+        echo "KEYSTORE_PATH=$KEYSTORE_PATH" >> $GITHUB_ENV
+
+    - name: Build Release APK
+      env:
+        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      run: |
+        chmod +x gradlew
+        ./gradlew assembleRelease \
+          -Pandroid.injected.signing.store.file=${{ env.KEYSTORE_PATH }} \
+          -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD \
+          -Pandroid.injected.signing.key.alias=$KEY_ALIAS \
+          -Pandroid.injected.signing.key.password=$KEY_PASSWORD
+
+    - name: Build Release AAB
+      env:
+        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      run: |
+        ./gradlew bundleRelease \
+          -Pandroid.injected.signing.store.file=${{ env.KEYSTORE_PATH }} \
+          -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD \
+          -Pandroid.injected.signing.key.alias=$KEY_ALIAS \
+          -Pandroid.injected.signing.key.password=$KEY_PASSWORD
+
+    - name: Upload APK to GitHub Releases
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: app/build/outputs/apk/release/*.apk
+        draft: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload AAB to Google Play Store
+      uses: r0adkll/upload-google-play@v1
+      with:
+        serviceAccountJsonPlainText: ${{ secrets.PLAY_STORE_SERVICE_ACCOUNT }}
+        packageName: next.isbest
+        releaseFiles: app/build/outputs/bundle/release/*.aab
+        track: internal
+        status: draft
+        
+    - name: Cleanup
+      if: always()
+      run: |
+        rm -f ${{ env.KEYSTORE_PATH }}
+        echo "Keystore file cleaned up"
+
+    - name: Create Release Notes
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        TAG_NAME=${GITHUB_REF#refs/tags/}
+        echo "✅ Released version: $TAG_NAME" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "📱 APK: Available in GitHub Releases" >> $GITHUB_STEP_SUMMARY
+        echo "📦 AAB: Uploaded to Play Store (Internal Track - Draft)" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "🔗 Next Steps:" >> $GITHUB_STEP_SUMMARY
+        echo "1. Go to Google Play Console" >> $GITHUB_STEP_SUMMARY
+        echo "2. Review the draft release in Internal Track" >> $GITHUB_STEP_SUMMARY
+        echo "3. Click 'Review release' then 'Start rollout to Internal testing'" >> $GITHUB_STEP_SUMMARY
