@@ -1,0 +1,15 @@
+{
+  "appId": "next.isbest",
+  "appName": "Next",
+  "webDir": "out",
+  "server": {
+    "url": "https://next-nexto.vercel.app",
+    "cleartext": true
+  },
+  "plugins": {
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
+    }
+  }
+}
+
