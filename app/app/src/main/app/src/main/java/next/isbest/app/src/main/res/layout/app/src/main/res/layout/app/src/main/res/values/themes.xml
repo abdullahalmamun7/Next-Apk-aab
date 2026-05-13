@@ -1,6 +1,0 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.Next" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:statusBarColor" tools:targetApi="l">#FFFFFF</item>
-        <item name="android:navigationBarColor">#FFFFFF</item>
-    </style>
-</resources>
