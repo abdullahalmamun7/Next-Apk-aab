@@ -6,7 +6,7 @@ android {
     compileSdkVersion 33
     defaultConfig {
         applicationId "next.isbest"
-        minSdkVersion 21
+        minSdkVersion 22
         targetSdkVersion 33
         versionCode 21
         versionName "3.0.0"
