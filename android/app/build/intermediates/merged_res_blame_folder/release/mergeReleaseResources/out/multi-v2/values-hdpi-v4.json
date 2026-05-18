@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "next.isbest.app-mergeReleaseResources-33:/values-hdpi-v4/values-hdpi-v4.xml",
+            "outputFile": "next.isbest.app-mergeReleaseResources-29:/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
                     "source": "/home/codespace/.gradle/caches/9.4.0/transforms/487f42ee7d5563e56fa7a3f2e79946a2/transformed/appcompat-1.6.1/res/values-hdpi-v4/values-hdpi-v4.xml",

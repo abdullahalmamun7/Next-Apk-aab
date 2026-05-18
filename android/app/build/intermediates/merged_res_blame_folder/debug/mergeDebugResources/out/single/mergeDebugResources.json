@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "next.isbest.app-debug-31:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "next.isbest.app-main-33:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "next.isbest.app-debug-31:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "next.isbest.app-main-33:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "next.isbest.app-debug-31:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "next.isbest.app-main-33:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "next.isbest.app-debug-31:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "next.isbest.app-main-33:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "next.isbest.app-debug-31:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "next.isbest.app-main-33:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "next.isbest.app-debug-31:/mipmap-ldpi_ic_launcher_round.png.flat",
+        "source": "next.isbest.app-main-33:/mipmap-ldpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "next.isbest.app-debug-31:/xml_config.xml.flat",
+        "source": "next.isbest.app-main-33:/xml/config.xml"
+    },
+    {
+        "merged": "next.isbest.app-debug-31:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "next.isbest.app-main-33:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "next.isbest.app-debug-31:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "next.isbest.app-main-33:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "next.isbest.app-debug-31:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "next.isbest.app-main-33:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "next.isbest.app-debug-31:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "next.isbest.app-main-33:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "next.isbest.app-debug-31:/mipmap-ldpi_ic_launcher.png.flat",
+        "source": "next.isbest.app-main-33:/mipmap-ldpi/ic_launcher.png"
+    },
+    {
+        "merged": "next.isbest.app-debug-31:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "next.isbest.app-main-33:/mipmap-hdpi/ic_launcher.png"
+    }
+]

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "next.isbest.app-mergeReleaseResources-33:/values-v21/values-v21.xml",
+            "outputFile": "next.isbest.app-mergeReleaseResources-29:/values-v21/values-v21.xml",
             "map": [
                 {
                     "source": "/home/codespace/.gradle/caches/9.4.0/transforms/487f42ee7d5563e56fa7a3f2e79946a2/transformed/appcompat-1.6.1/res/values-v21/values-v21.xml",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/codespace/.gradle/caches/9.4.0/transforms/b8068121ff226d46d2e8e41b28890809/transformed/core-1.10.0/res/values-v21/values-v21.xml",
+                    "source": "/home/codespace/.gradle/caches/9.4.0/transforms/f8a0be4bfd33e7961b0344924b18aade/transformed/core-1.12.0/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

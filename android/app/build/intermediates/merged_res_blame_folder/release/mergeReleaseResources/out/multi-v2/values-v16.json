@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "next.isbest.app-mergeReleaseResources-33:/values-v16/values-v16.xml",
+            "outputFile": "next.isbest.app-mergeReleaseResources-29:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/home/codespace/.gradle/caches/9.4.0/transforms/b8068121ff226d46d2e8e41b28890809/transformed/core-1.10.0/res/values-v16/values-v16.xml",
+                    "source": "/home/codespace/.gradle/caches/9.4.0/transforms/f8a0be4bfd33e7961b0344924b18aade/transformed/core-1.12.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
